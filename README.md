@@ -40,8 +40,11 @@ The main modifier key (`$mod`) is configured to **Super** (Windows key).
 
 ### Vim-style Navigation
  `Super + H` : Focus left
+ 
  `Super + J` : Focus down
+ 
  `Super + K` : Focus up
+ 
  `Super + L` : Focus right
 
 # File Structure
