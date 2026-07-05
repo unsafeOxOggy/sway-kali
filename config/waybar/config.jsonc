@@ -1,0 +1,26 @@
+{
+    "layer": "top",
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["network","cpu","memory","clock"],
+    "sway/window": {
+        "max-length": 20
+    },
+    "cpu": {
+	"interval": 10,
+	"format": " {}%",
+	"max-length": 10
+    },
+    "memory": {
+	"interval": 30,
+	"format": " {used}G"
+    },
+    "clock": {
+        "format-alt": "{:%a, %d. %b  %H:%M}"
+    },
+    "network": {
+	"interface": "enp1s0",
+	"format-ethernet": "{ipaddr}/{cidr}",
+	"tooltip-format": "{ifname}"
+}
+}
