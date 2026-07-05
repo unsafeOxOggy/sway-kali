@@ -6,7 +6,7 @@ set -o pipefail
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
-NC='\033[0m'
+NC='\033[0m' # No Color
 
 echo_info() {
     echo -e "${GREEN}[INFO]${NC} $1"
@@ -31,7 +31,8 @@ echo_info "Updating system package lists and upgrading packages..."
 sudo apt-get update && sudo apt-get upgrade -y
 
 echo_info "Installing the sway window manager environment..."
-sudo apt-get install -y sway kitty neovim waybar rofi \
+sudo apt-get install -y sway kitty \
+     neovim \
      grim slurp wl-clipboard libnotify-bin
    
 # Create the local fonts directory
@@ -44,25 +45,33 @@ tar -xvf RobotoMono.tar.xz -C ~/.local/share/fonts/
 rm RobotoMono.tar.xz
 fc-cache -fv
 
-# Create configuration directories
+# Création des répertoires de configuration
 echo_info "Creating configuration directory structure..."
 mkdir -p ~/.config/sway
 mkdir -p ~/.config/rofi
 mkdir -p ~/.config/waybar
 
-# Deploy configuration files
+# Déploiement des fichiers
 echo_info "Copying configuration files..."
-# ─── Sway config ────────────────────────────────────
-cp -r config/sway/* ~/.config/sway
-chmod +x ~/.config/sway/scripts/* 
+# Sway and scripts
+if [ -d "config/sway" ]; then
+    cp -r config/sway/* ~/.config/sway/
+    chmod +x ~/.config/sway/scripts/* 2>/dev/null || echo_warn "No scripts found to make executable"
+fi
 
-# ─── rofi config ────────────────────────────────
-cp  config/rofi/config.rasi ~/.config/rofi/config.rasi
-
-# Copy wallpapers
+# Wallpapers 
 if [ -d "config/sway/wallpaper" ]; then
-    cp -r config/sway/wallpaper/* ~/.config/sway/wallpaper
-    echo_info "Wallpapers successfully copied to ~/.config/sway/wallpaper"
+    cp -r config/sway/wallpaper/* ~/.config/sway/wallpaper/
+fi
+
+# Rofi
+if [ -f "config/rofi/config.rasi" ]; then
+    cp config/rofi/config.rasi ~/.config/rofi/config.rasi
+fi
+
+# Waybar
+if [ -d "config/waybar" ]; then
+    cp -r config/waybar/* ~/.config/waybar/
 fi
 
 echo_info "═══════════════════════════════════════════════════════════"
