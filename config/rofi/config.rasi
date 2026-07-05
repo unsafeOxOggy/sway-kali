@@ -1,0 +1,118 @@
+
+configuration {
+    font: "RobotoMono Nerd Font Propo 11";
+    location: 6;
+    show-icons: true;
+    terminal: "kitty";
+    hover-select: true;
+    scroll-method: 0;
+    drun-match-fields: "name,generic,exec,categories,keywords";
+    drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
+    display-window: "";
+    display-drun: "";
+    display-run: "";
+
+}
+
+* {
+    bg-primary:      #0f141c; 
+    bg-secondary:    #2a5a60;
+    fg-primary:      #d86969; 
+    fg-muted:        #7f849c; 
+    accent:          #0ea3b1; 
+    border-color:    #1191a5; 
+
+    text-color:       @fg-primary;
+}
+
+window {
+    background-color: @bg-primary;
+    text-color:       @fg-primary;
+    border:           1px;
+    border-radius:    10px;
+    border-color:     @border-color;
+    width:            500px;
+    padding:          20px;
+}
+
+mainbox {
+    children:         [ inputbar, listview, mode-switcher ];
+    spacing:          12px;
+}
+
+inputbar {
+    children:         [ prompt, entry ];
+    background-color: @bg-secondary;
+    border-radius:    8px;
+    padding:          10px 14px;
+}
+
+prompt {
+    background-color: @accent;
+    text-color:       @bg-primary;
+    font:             "RobotoMono Nerd Font Propo 11";
+    padding:          4px 10px;
+    border-radius:    6px;
+    margin-right:     10px;
+}
+
+entry {
+    placeholder:       " launch...";
+    placeholder-color: @fg-muted;
+    vertical-align:    0.5;
+}
+
+listview {
+    lines:            5;
+    columns:          1;
+    fixed-height:     true;
+    spacing:          6px;
+    scrollbar:        false;
+}
+
+element {
+    padding:          8px 12px;
+    border-radius:    8px;
+    cursor:           pointer;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color:       @fg-primary;
+}
+
+element selected.normal {
+    background-color: @bg-secondary;
+    text-color:       @accent;
+    border:           1px;
+    border-color:     @accent;
+}
+
+element-icon {
+    size:             24px;
+    margin-right:     12px;
+    vertical-align:   0.5;
+}
+
+element-text {
+    vertical-align:   0.5;
+    text-color:       inherit;
+}
+
+mode-switcher {
+    spacing:          10px;
+}
+
+button {
+    padding:          8px;
+    border-radius:    8px;
+    background-color: @bg-secondary;
+    text-color:       @fg-muted;
+    horizontal-align: 0.5;
+    cursor:           pointer;
+}
+
+button selected {
+    background-color: @accent;
+    text-color:       @bg-primary;
+}
