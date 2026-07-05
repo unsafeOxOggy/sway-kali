@@ -1,0 +1,40 @@
+* {
+    font-family: RobotoMono Nerd Font Propo;
+    font-size: 14px;
+    min-height: 0;
+    border-radius: 0px;
+}
+
+window#waybar {
+    background-color: #1a1b26;
+    color: #ffffff;
+}
+
+window#waybar.hidden {
+    opacity: 0.5;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background: transparent;
+    color: white;
+}
+
+#workspaces button.focused {
+    background: #64727D;
+}
+
+#workspaces button.urgent {
+    background: #c20b4b;
+}
+
+#clock,
+#memory,
+#cpu,
+#network {
+    border-radius: 5px;
+    padding: 0px 5px;
+    margin: 5px 10px 5px 0px;
+    color: white;
+    background: #3275a2;
+}
