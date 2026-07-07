@@ -64,3 +64,5 @@ The main modifier key (`$mod`) is configured to **Super** (Windows key).
 │       └── style.css          
 ├── install.sh                 
 ```
+# Final look
+<img width="1920" height="1080" alt="end" src="https://github.com/user-attachments/assets/b29585d5-58ca-4ec5-95eb-6da9f89949ab" />
